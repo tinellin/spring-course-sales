@@ -1,49 +1,55 @@
 package com.training.tinelli.sales.repository;
 
 import com.training.tinelli.sales.domain.entity.Client;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.TypedQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
 
 @Repository
 public class ClientRepository {
-
-    private static final String INSERT = "INSERT INTO Client (name) VALUES (?) ";
-    private static final String SELECT_ALL = "SELECT * FROM Client ";
-    private static final String UPDATE = "UPDATE Client SET name = ? WHERE id = ? ";
-    private static final String DELETE = "DELETE FROM Client WHERE id = ? ";
+    @Autowired
+    private EntityManager entityManager;
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
+    @Transactional
     public Client save(Client client){
-        jdbcTemplate.update(INSERT, new Object[]{client.getName()});
+        entityManager.persist(client);
         return client;
     }
 
+    @Transactional
     public Client update(Client client){
-        jdbcTemplate.update(UPDATE, new Object[]{client.getName(), client.getId()});
+        entityManager.merge(client);
         return client;
     }
 
-    public void deletar(Client client){
-        jdbcTemplate.update(DELETE, new Object[]{client.getId()});
+    @Transactional
+    public void delete(Client client){
+        entityManager.remove(client);
     }
 
+    @Transactional
+    public void delete(Integer id){
+        Client client = entityManager.find(Client.class, id);
+        delete(client);
+    }
+
+    @Transactional(readOnly = true)
     public List<Client> getByName(String name){
-        return jdbcTemplate.query(
-                SELECT_ALL.concat(" WHERE name LIKE ? "),
-                new Object[]{"%" + name + "%"},
-                (rs, rowNum) -> new Client(rs.getInt("id"), rs.getString("name"))
-        );
+        TypedQuery<Client> query = entityManager.createQuery("SELECT c FROM Client c WHERE c.name like :name", Client.class);
+        query.setParameter("name", "%" + name + "%");
+        return query.getResultList();
     }
 
+    @Transactional(readOnly = true)
     public List<Client> getAll() {
-        return jdbcTemplate.query(SELECT_ALL, (rs, rowNum) -> new Client(rs.getInt("id"), rs.getString("name")));
+        return entityManager.createQuery("FROM Client", Client.class).getResultList();
     }
 }
