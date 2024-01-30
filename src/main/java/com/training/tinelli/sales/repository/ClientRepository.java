@@ -15,9 +15,6 @@ public class ClientRepository {
     @Autowired
     private EntityManager entityManager;
 
-    @Autowired
-    private JdbcTemplate jdbcTemplate;
-
     @Transactional
     public Client save(Client client){
         entityManager.persist(client);
@@ -32,6 +29,8 @@ public class ClientRepository {
 
     @Transactional
     public void delete(Client client){
+        if (!entityManager.contains(client))
+            client = entityManager.merge(client);
         entityManager.remove(client);
     }
 

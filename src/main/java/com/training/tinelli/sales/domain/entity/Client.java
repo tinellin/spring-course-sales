@@ -13,6 +13,8 @@ public class Client {
     @Column(name = "name", length = 100, nullable = false)
     private String name;
 
+    public Client() {}
+
     public Client(Integer id, String name) {
         this.id = id;
         this.name = name;
@@ -36,5 +38,13 @@ public class Client {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Client{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
     }
 }
