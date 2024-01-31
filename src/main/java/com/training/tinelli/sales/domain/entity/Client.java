@@ -1,5 +1,6 @@
 package com.training.tinelli.sales.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.Set;
@@ -15,6 +16,10 @@ public class Client {
     @Column(name = "name", length = 100, nullable = false)
     private String name;
 
+    @Column(name = "cpf", columnDefinition = "CHAR(11)", nullable = false)
+    private String cpf;
+
+    @JsonIgnore
     @OneToMany(mappedBy = "client")
     private Set<Order> orders;
 
@@ -24,9 +29,10 @@ public class Client {
         return orders;
     }
 
-    public Client(Integer id, String name) {
+    public Client(Integer id, String name, String cpf) {
         this.id = id;
         this.name = name;
+        this.cpf = cpf;
     }
 
     public Client(String name) {
@@ -47,6 +53,18 @@ public class Client {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public void setOrders(Set<Order> orders) {
+        this.orders = orders;
     }
 
     @Override

@@ -15,9 +15,9 @@ public class SalesApplication {
 	public CommandLineRunner init(@Autowired ClientRepository clientRepository) {
 		return args -> {
 			System.out.println("!********* Salvando clientes *********!");
-			clientRepository.save(new Client(null, "Maria"));
-			clientRepository.save(new Client(null, "Bob"));
-			clientRepository.save(new Client(null, "Alexa"));
+			clientRepository.save(new Client(null, "Maria", "12345678901"));
+			clientRepository.save(new Client(null, "Bob", "09876543212"));
+			clientRepository.save(new Client(null, "Alexa", "11111111111"));
 		};
 	}
 
