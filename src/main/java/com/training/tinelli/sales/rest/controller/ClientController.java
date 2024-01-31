@@ -26,7 +26,7 @@ public class ClientController {
     }
 
     @PostMapping
-    public Client save(@RequestBody Client client) {
+    public Client saveClient(@RequestBody Client client) {
         return clientRepo.save(client);
     }
 
