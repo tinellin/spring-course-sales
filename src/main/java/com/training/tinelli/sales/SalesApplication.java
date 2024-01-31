@@ -15,14 +15,9 @@ public class SalesApplication {
 	public CommandLineRunner init(@Autowired ClientRepository clientRepository) {
 		return args -> {
 			System.out.println("!********* Salvando clientes *********!");
-			clientRepository.save(new Client("Maria"));
-			clientRepository.save(new Client("Bob"));
-			clientRepository.save(new Client("Alexa"));
-
-			System.out.println("!********* Buscando clientes *********!");
-			clientRepository.findByNameLike("Maria").forEach(System.out::println);
-			boolean exists = clientRepository.existsByName("Enzo");
-			System.out.println(exists);
+			clientRepository.save(new Client(null, "Maria"));
+			clientRepository.save(new Client(null, "Bob"));
+			clientRepository.save(new Client(null, "Alexa"));
 		};
 	}
 

@@ -1,9 +1,21 @@
 package com.training.tinelli.sales.domain.entity;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "Order_Item")
 public class OrderItem {
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+    @Column(name = "quantity")
     private Integer quantity;
+
+    @ManyToOne
+    @JoinColumn(name = "product_id")
     private Product product;
+
+    @ManyToOne
+    @JoinColumn(name = "order_id")
     private Order order;
 
     public Integer getId() {

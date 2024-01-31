@@ -2,6 +2,8 @@ package com.training.tinelli.sales.domain.entity;
 
 import jakarta.persistence.*;
 
+import java.util.Set;
+
 @Entity
 @Table(name = "Client")
 public class Client {
@@ -13,7 +15,14 @@ public class Client {
     @Column(name = "name", length = 100, nullable = false)
     private String name;
 
+    @OneToMany(mappedBy = "client")
+    private Set<Order> orders;
+
     public Client() {}
+
+    public Set<Order> getOrders() {
+        return orders;
+    }
 
     public Client(Integer id, String name) {
         this.id = id;
