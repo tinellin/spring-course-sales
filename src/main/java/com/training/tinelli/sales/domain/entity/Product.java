@@ -8,6 +8,13 @@ import java.math.BigDecimal;
 @Table(name = "Product")
 public class Product {
 
+    public Product() {}
+
+    public Product(String description, BigDecimal price) {
+        this.description = description;
+        this.price = price;
+    }
+
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Integer id;

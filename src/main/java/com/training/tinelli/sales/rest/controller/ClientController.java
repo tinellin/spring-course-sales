@@ -36,11 +36,10 @@ public class ClientController {
         return clientRepo.findById(id)
                 .map(client -> {
                     clientRepo.delete(client);
-                    System.out.println(client);
                     return client;
                 })
                 .orElseThrow(() ->
-                    new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente excluido com sucesso.")
+                    new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente não encontrado.")
                 );
     }
 
@@ -61,7 +60,7 @@ public class ClientController {
                 .withIgnoreCase()
                 .withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING);
 
-        Example example = Example.of(filter, matcher);
+        Example<Client> example = Example.of(filter, matcher);
         return clientRepo.findAll(example);
     }
 }
