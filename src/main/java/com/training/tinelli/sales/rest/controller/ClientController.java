@@ -6,7 +6,7 @@ import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import com.training.tinelli.sales.repository.ClientRepository;
+import com.training.tinelli.sales.domain.repository.ClientRepository;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;

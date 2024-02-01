@@ -1,15 +1,16 @@
 package com.training.tinelli.sales.domain.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 
+@Data @NoArgsConstructor @AllArgsConstructor
 @Entity
 @Table(name = "Product")
 public class Product {
-
-    public Product() {}
-
     public Product(String description, BigDecimal price) {
         this.description = description;
         this.price = price;
@@ -24,28 +25,4 @@ public class Product {
 
     @Column(name = "price")
     private BigDecimal price;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public BigDecimal getPrice() {
-        return price;
-    }
-
-    public void setPrice(BigDecimal price) {
-        this.price = price;
-    }
 }

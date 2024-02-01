@@ -2,8 +2,8 @@ package com.training.tinelli.sales;
 
 import com.training.tinelli.sales.domain.entity.Client;
 import com.training.tinelli.sales.domain.entity.Product;
-import com.training.tinelli.sales.repository.ClientRepository;
-import com.training.tinelli.sales.repository.ProductRepository;
+import com.training.tinelli.sales.domain.repository.ClientRepository;
+import com.training.tinelli.sales.domain.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
