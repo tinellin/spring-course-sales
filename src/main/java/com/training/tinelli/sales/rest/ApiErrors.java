@@ -10,6 +10,10 @@ public class ApiErrors {
 
     private final List<String> errors;
 
+    public ApiErrors(List<String> errors) {
+        this.errors = errors;
+    }
+
     public ApiErrors(String msg) {
         this.errors = Collections.singletonList(msg);
     }

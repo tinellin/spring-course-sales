@@ -8,6 +8,7 @@ import com.training.tinelli.sales.rest.dto.OrderInformationDTO;
 import com.training.tinelli.sales.rest.dto.OrderItemInformationDTO;
 import com.training.tinelli.sales.rest.dto.OrderStatusUpdateDTO;
 import com.training.tinelli.sales.service.OrderService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.*;
@@ -15,8 +16,6 @@ import org.springframework.web.bind.annotation.*;
 import java.time.format.DateTimeFormatter;
 import java.util.Collections;
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 import static org.springframework.http.HttpStatus.*;
 
@@ -29,7 +28,7 @@ public class OrderController {
 
     @PostMapping
     @ResponseStatus(CREATED)
-    public Integer saveOrder(@RequestBody OrderDTO orderDTO) {
+    public Integer saveOrder(@RequestBody @Valid OrderDTO orderDTO) {
         Order order = orderService.saveOrder(orderDTO);
         return order.getId();
     }
@@ -54,11 +53,11 @@ public class OrderController {
         orderService.updateOrderStatus(id, dto);
     }
 
-    private Set<OrderItemInformationDTO> convertToOrdemItemInformationDTO(List<OrderItem> items) {
+    private List<OrderItemInformationDTO> convertToOrdemItemInformationDTO(List<OrderItem> items) {
 
         /* boa prática retornar uma lista vazia ao invés de null */
         if (CollectionUtils.isEmpty(items))
-            return Collections.emptySet();
+            return Collections.emptyList();
 
         return items.stream().map(orderItem ->
                 OrderItemInformationDTO.builder()
@@ -66,6 +65,6 @@ public class OrderController {
                         .productUnitPrice(orderItem.getProduct().getPrice())
                         .quantity(orderItem.getQuantity())
                         .build()
-        ).collect(Collectors.toSet());
+        ).toList();
     }
 }

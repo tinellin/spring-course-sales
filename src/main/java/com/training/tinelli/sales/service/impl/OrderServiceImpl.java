@@ -22,6 +22,8 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor // são construtores obrigatórios, faz pra gente a injeção de dependência dos repos
@@ -53,7 +55,8 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Optional<Order> getFullOrderById(Integer id) {
-        return orderRepo.findByIdFetchItems(id);
+        Optional<Order> order = orderRepo.findByIdFetchItems(id);
+        return order;
     }
 
     @Override
@@ -78,6 +81,6 @@ public class OrderServiceImpl implements OrderService {
             item.setOrder(order);
 
             return item;
-        }).toList();
+        }).collect(Collectors.toList());
     }
 }

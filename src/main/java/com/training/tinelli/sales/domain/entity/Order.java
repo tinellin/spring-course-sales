@@ -1,6 +1,7 @@
 package com.training.tinelli.sales.domain.entity;
 
 import com.training.tinelli.sales.domain.enums.OrderStatus;
+import com.training.tinelli.sales.validation.NotEmptyList;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -30,7 +31,8 @@ public class Order {
     @JoinColumn(name = "client_id")
     private Client client;
 
-    @OneToMany(mappedBy = "order", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "order", fetch = FetchType.EAGER)
+    @NotEmptyList(message = "{campo.items-pedido.obrigatorio}")
     private List<OrderItem> items;
 }
 

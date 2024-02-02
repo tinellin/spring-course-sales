@@ -1,6 +1,7 @@
 package com.training.tinelli.sales.rest.controller;
 
 import com.training.tinelli.sales.domain.entity.Client;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
@@ -26,7 +27,8 @@ public class ClientController {
     }
 
     @PostMapping
-    public Client saveClient(@RequestBody Client client) {
+    @ResponseStatus(HttpStatus.CREATED)
+    public Client saveClient(@RequestBody @Valid Client client) {
         return clientRepo.save(client);
     }
 
@@ -45,7 +47,7 @@ public class ClientController {
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public Client updateClient (@PathVariable Integer id, @RequestBody Client client) {
+    public Client updateClient (@PathVariable Integer id, @RequestBody @Valid Client client) {
         return clientRepo.findById(id).map(isClientExist -> {
             client.setId(isClientExist.getId());
             clientRepo.save(client);

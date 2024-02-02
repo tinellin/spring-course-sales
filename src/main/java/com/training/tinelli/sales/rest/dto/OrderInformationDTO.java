@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
-import java.util.Set;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -19,5 +19,5 @@ public class OrderInformationDTO {
     private String orderDate;
     private BigDecimal total;
     private String status;
-    private Set<OrderItemInformationDTO> items;
+    private List<OrderItemInformationDTO> items;
 }
