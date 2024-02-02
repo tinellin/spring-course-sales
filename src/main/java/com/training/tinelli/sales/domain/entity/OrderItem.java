@@ -1,10 +1,11 @@
 package com.training.tinelli.sales.domain.entity;
 
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
 
 @Data @NoArgsConstructor @AllArgsConstructor @EqualsAndHashCode
 @Entity

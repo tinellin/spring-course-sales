@@ -2,11 +2,11 @@ package com.training.tinelli.sales.domain.entity;
 
 import com.training.tinelli.sales.domain.enums.OrderStatus;
 import com.training.tinelli.sales.validation.NotEmptyList;
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
@@ -15,7 +15,8 @@ import java.util.List;
 @Entity
 @Table(name = "Purchase_Order")
 public class Order {
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     @Column(name = "total", precision = 20, scale = 2)

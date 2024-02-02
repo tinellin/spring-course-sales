@@ -1,9 +1,9 @@
 package com.training.tinelli.sales.validation;
 
 import com.training.tinelli.sales.validation.constraintValidation.NotEmptyListValidator;
-import jakarta.validation.Constraint;
-import jakarta.validation.Payload;
 
+import javax.validation.Constraint;
+import javax.validation.Payload;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

@@ -8,11 +8,11 @@ import com.training.tinelli.sales.rest.dto.OrderInformationDTO;
 import com.training.tinelli.sales.rest.dto.OrderItemInformationDTO;
 import com.training.tinelli.sales.rest.dto.OrderStatusUpdateDTO;
 import com.training.tinelli.sales.service.OrderService;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.time.format.DateTimeFormatter;
 import java.util.Collections;
 import java.util.List;
