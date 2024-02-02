@@ -3,6 +3,7 @@ package com.training.tinelli.sales.config;
 import com.training.tinelli.sales.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -39,8 +40,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/v0/clients/**").hasAnyRole("USER", "ADMIN")
                 .antMatchers("/api/v0/orders/**").hasAnyRole("USER", "ADMIN")
                 .antMatchers("/api/v0/products/**").hasRole("ADMIN")
+                .antMatchers(HttpMethod.POST,"/api/v0/users/**").permitAll() // para essa rota, o verbo POST é permitido por qualquer um
+                .anyRequest().authenticated() // qualquer outra rota tem que estar autenticado
                 .and()
                     .httpBasic(); // permite a passagem por header, e.g. "Authorization"
     }
-
 }

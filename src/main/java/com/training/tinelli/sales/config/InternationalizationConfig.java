@@ -11,17 +11,17 @@ import java.util.Locale;
 @Configuration
 public class InternationalizationConfig {
 
-    // dizer ao spring onde está o arquivo de mensagens e como está formatado
+    // Dizer ao spring onde está o arquivo de mensagens e como está formatado
     @Bean
     public MessageSource messageSource(){
         ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
-        messageSource.setBasename("classpath:messages");
+        messageSource.setBasename("classpath:message");
         messageSource.setDefaultEncoding("ISO-8859-1");
         messageSource.setDefaultLocale(Locale.getDefault());
         return messageSource;
     }
 
-    // utilizar o fonte de mensagens obtida nas validações
+    // Utilizar o fonte de mensagens obtida nas validações
     @Bean
     public LocalValidatorFactoryBean validatorFactoryBean(){
         LocalValidatorFactoryBean bean = new LocalValidatorFactoryBean();
