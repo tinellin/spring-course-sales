@@ -4,6 +4,7 @@ import com.training.tinelli.sales.domain.enums.OrderStatus;
 import com.training.tinelli.sales.validation.NotEmptyList;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
@@ -11,7 +12,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
-@Data @NoArgsConstructor @AllArgsConstructor
+@Data @NoArgsConstructor @AllArgsConstructor @EqualsAndHashCode
 @Entity
 @Table(name = "Purchase_Order")
 public class Order {

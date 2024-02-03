@@ -1,6 +1,5 @@
 package com.training.tinelli.sales;
 
-import com.training.tinelli.sales.domain.entity.Client;
 import com.training.tinelli.sales.domain.entity.Product;
 import com.training.tinelli.sales.domain.repository.ClientRepository;
 import com.training.tinelli.sales.domain.repository.ProductRepository;
@@ -18,10 +17,12 @@ public class SalesApplication {
 	@Bean
 	public CommandLineRunner init(@Autowired ClientRepository clientRepository, @Autowired ProductRepository productRepository) {
 		return args -> {
+			/*
 			System.out.println("!********* Salvando clientes *********!");
 			clientRepository.save(new Client(null, "Maria", "12345678901"));
 			clientRepository.save(new Client(null, "Bob", "09876543212"));
 			clientRepository.save(new Client(null, "Alexa", "11111111111"));
+			*/
 
 			productRepository.save(new Product("Iphone 15", new BigDecimal("5000.00")));
 			productRepository.save(new Product("Notebook Dell", new BigDecimal("5500.00")));
