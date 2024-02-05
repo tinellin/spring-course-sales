@@ -21,7 +21,7 @@ public class Client {
         this.cpf = cpf;
     }
 
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
 

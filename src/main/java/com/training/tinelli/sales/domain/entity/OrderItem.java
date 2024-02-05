@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "Order_Item")
 public class OrderItem {
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(name = "quantity")
