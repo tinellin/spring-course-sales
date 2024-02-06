@@ -1,6 +1,6 @@
 package com.training.tinelli.sales.rest.controller;
 
-import com.training.tinelli.sales.JwtService;
+import com.training.tinelli.sales.service.impl.JwtService;
 import com.training.tinelli.sales.domain.entity.User;
 import com.training.tinelli.sales.exception.InvalidPasswordException;
 import com.training.tinelli.sales.rest.dto.CredentialsDTO;

@@ -1,4 +1,4 @@
-package com.training.tinelli.sales;
+package com.training.tinelli.sales.service.impl;
 
 import com.training.tinelli.sales.domain.entity.User;
 import io.jsonwebtoken.Claims;

@@ -1,6 +1,6 @@
 package com.training.tinelli.sales.security.jwt;
 
-import com.training.tinelli.sales.JwtService;
+import com.training.tinelli.sales.service.impl.JwtService;
 import com.training.tinelli.sales.service.impl.UserServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -49,12 +49,14 @@ public class JwtAuthFilter extends OncePerRequestFilter {
                     para gerar a credencial
                  */
                 UserDetails userDetails = userService.loadUserByUsername(username);
+
                 /* A credencial vai dizer a nossa aplicação que o usuário está autenticado e possui acesso */
                 UsernamePasswordAuthenticationToken user = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+
                 /* Devemos dizer ao contexto do Spring Security que a credencial é para um app web */
                 user.setDetails(new WebAuthenticationDetailsSource().buildDetails(httpServletReq));
 
-                /* Por fim, acessamos o contexto do Spring Security para obter ou definir o usuário autenticado o */
+                /* Por fim, acessamos o contexto do Spring Security para obter ou definir o usuário autenticado */
                 SecurityContextHolder.getContext().setAuthentication(user);
             }
         }

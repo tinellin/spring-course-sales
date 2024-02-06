@@ -1,6 +1,6 @@
 package com.training.tinelli.sales.config;
 
-import com.training.tinelli.sales.JwtService;
+import com.training.tinelli.sales.service.impl.JwtService;
 import com.training.tinelli.sales.security.jwt.JwtAuthFilter;
 import com.training.tinelli.sales.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
