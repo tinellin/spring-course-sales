@@ -5,11 +5,11 @@
 [X] - Persistência e Acesso a dados com Spring Data JPA
 [X] - Spring Web: Desenvolvimento de API Restful
 [X] - Bean Validation
-[] - Spring Security e JWT
-[] - Migração para o banco MySQL
-[] - Documentação de API com Swagger
-[] - Build e Deploy
-[] - Fim do curso principal, Aulas Complementares
-[] - Aprofundamento em Spring Data JPA
-[] - Trabalhando com Docker
-[] - Criando um controle de acesso completo com Spring Security e Spring Boot 3
+[X] - Spring Security e JWT
+[X] - Migração para o banco MySQL
+[X] - Documentação de API com Swagger
+[X] - Build e Deploy
+[X] - Fim do curso principal, Aulas Complementares
+[X] - Aprofundamento em Spring Data JPA
+[X] - Trabalhando com Docker
+[X] - Criando um controle de acesso completo com Spring Security e Spring Boot 3
